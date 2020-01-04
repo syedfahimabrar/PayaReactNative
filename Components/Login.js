@@ -27,7 +27,7 @@ export default class Login extends Component {
         return (
             <View>
                 <ImageBackground source={require('../assets/payasian.jpg')} style={{width: '100%', height: '100%'}}>
-                    <ScrollView contentContainerStyle={defaultStyles.container} style={defaultStyles.container}>
+                    <ScrollView keyboardShouldPersistTaps='handled' contentContainerStyle={defaultStyles.container} style={defaultStyles.container}>
 
                         <Image
                             style={defaultStyles.Logonew}

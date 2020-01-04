@@ -24,7 +24,8 @@ module.exports = StyleSheet.create({
     },
     container: {
         height: '100%',
-        padding: 20
+        padding: '8%',
+        flexGrow: 1
     },
     Logo: {
         alignSelf: 'center',
@@ -44,7 +45,7 @@ module.exports = StyleSheet.create({
     },
     textInput: {
         color: 'black',
-        fontSize: 20,
+        fontSize: 15,
         borderWidth: 2,
         padding: 4,
         borderBottomColor: 'gray',
