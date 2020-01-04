@@ -3,17 +3,22 @@ import {StyleSheet,Platform,KeyboardAvoidingView , Image, ImageBackground, Scrol
 // noinspection ES6CheckImport
 import PhoneInputCustom from './PhoneInput';
 
+const auth = require('../Services/AuthService');
+
 const defaultStyles = require("../Styles/Styles");
 export default class SignUp extends Component{
     constructor(props) {
         super(props);
+        this.setinitialState();
+    }
+    setinitialState(){
         this.state = {
             fullname: '',
             username: '',
             password: '',
             confirmpassword:'',
             email: '',
-            cca2: 'BD',
+            country: '',
             phonenumber:'',
             SponsorUser:''
         };
@@ -23,11 +28,28 @@ export default class SignUp extends Component{
         console.log(childPhone);
     };
     getCountryCode = (code) => {
-        console.log(code);
-    }
+        this.setState({country:code});
+    };
+    _signup = async () =>{
+        let response = await auth.signup(this.state.username,this.state.password,
+            this.state.email,this.state.fullname,this.state.phonenumber,this.state.country,
+            this.state.SponsorUser);
+        if(response == true){
+            alert('signup successfull');
+            this.setinitialState();
+        }else{
+            alert(response);
+            console.log(response)
+        }
+    };
     render() {
         return(
-            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} keyboardVerticalOffset={-10} enabled  style={{flexGrow:1,height:'100%'}}>
+            <KeyboardAvoidingView
+                behavior= {"padding"}
+                keyboardVerticalOffset={Platform.select({ios: 0, android: 0})}
+                enabled
+                style={{flexGrow:1,height:'100%'}}
+            >
                 <ImageBackground source={require('../assets/payasian.jpg')} style={{flex:1,width: '100%', height: '100%'}}>
                     <ScrollView bounces={false} keyboardShouldPersistTaps='handled' style={defaultStyles.container}>
 
@@ -73,7 +95,7 @@ export default class SignUp extends Component{
                             <TouchableOpacity
                                 style={defaultStyles.SubmitButtonStyle}
                                 activeOpacity={.5}
-                                onPress={this._login}
+                                onPress={this._signup}
                             >
 
                                 <Text style={defaultStyles.ButtonTextStyle}> SIGNUP </Text>
