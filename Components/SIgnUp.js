@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet,KeyboardAvoidingView , Image, ImageBackground, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {StyleSheet,Platform,KeyboardAvoidingView , Image, ImageBackground, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
 // noinspection ES6CheckImport
 import PhoneInputCustom from './PhoneInput';
 
@@ -27,7 +27,7 @@ export default class SignUp extends Component{
     }
     render() {
         return(
-            <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={50}  enabled  style={{flexGrow:1,height:'100%'}}>
+            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : undefined} keyboardVerticalOffset={-10} enabled  style={{flexGrow:1,height:'100%'}}>
                 <ImageBackground source={require('../assets/payasian.jpg')} style={{flex:1,width: '100%', height: '100%'}}>
                     <ScrollView bounces={false} keyboardShouldPersistTaps='handled' style={defaultStyles.container}>
 

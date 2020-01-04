@@ -95,7 +95,7 @@ export default class PhoneInputCustom extends React.Component {
                                             style={styles.iconStyle}
                                         />
                                         {/* country flag */}
-                                        <View><Text style={{fontSize: 20,paddingTop: '4%'}}>{flag}</Text></View>
+                                        <View><Text style={{fontSize: 20,paddingTop: '3%'}}>{flag}</Text></View>
                                         {/* open modal */}
                                         <Icon
                                             active
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     },
     iconStyle: {
         color: 'black',
-        fontSize: 28,
+        fontSize: 20,
         paddingTop:'5%',
         paddingRight:'2%'
     },
